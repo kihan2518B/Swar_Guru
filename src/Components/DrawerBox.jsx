@@ -88,7 +88,7 @@ const DrawerBox = ({
           as="h1"
           fontSize="2xl"
           mb="8"
-          bgGradient="linear(to-r, blue.600, orange.600)"
+          bgGradient="linear(to-r, teal.500, blue.600)"
           bgClip="text"
           fontWeight="bold"
           textAlign="center"
@@ -135,6 +135,7 @@ const DrawerBox = ({
               isLoading={isLoading}
               type="submit"
               isDisabled={!file} // Disable upload button if no file is selected
+              bgGradient="linear(to-r, teal.500, blue.600)"
             >
               Upload
             </Button>
@@ -174,18 +175,15 @@ const DrawerBox = ({
 
               <AlertDialogFooter>
                 <Button
-                  colorScheme="blue"
+                  colorScheme="teal"
                   onClick={handleUploadRecording}
                   disabled={!audioDetails.blob} // Disable if no audio is recorded
+                  bgGradient="linear(to-r, teal.500, blue.600)"
                 >
                   Upload
                 </Button>
 
-                <Button
-                  ref={cancelRef}
-                  onClick={handleDialogClose}
-                  ml={3}
-                >
+                <Button ref={cancelRef} onClick={handleDialogClose} ml={3}>
                   Close
                 </Button>
                 {!isRecordingLocal && (
@@ -201,7 +199,6 @@ const DrawerBox = ({
             </AlertDialogContent>
           </AlertDialogOverlay>
         </AlertDialog>
-      
       </Flex>
     </Box>
   );
