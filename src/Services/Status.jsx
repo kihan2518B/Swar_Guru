@@ -9,7 +9,7 @@ const Status = ({ isLoading, status }) => {
         <div>
             <Text>
                 {
-                    isLoading ? `Calculating... ${status || 'uploading'}...` : 'Give me audio!'
+                    isLoading ? ` ${status || 'uploading'}...` : 'Give me audio!'
                 }
             </Text>
 
@@ -19,7 +19,7 @@ const Status = ({ isLoading, status }) => {
                 width="full"
                 isIndeterminate={isLoading}
                 // colorScheme='green'
-                   bgGradient="linear(to-r, teal.500, blue.600)"
+                bgGradient="linear(to-r, teal.500, blue.600)"
                 bgClip="text"
             />
         </div>
