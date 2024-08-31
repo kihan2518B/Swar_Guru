@@ -15,6 +15,7 @@ import DrawerBox from "./Components/DrawerBox";
 
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Status from "./Services/Status";
+import SentimentalAnalysis from "./Services/SentimentalAnalysis";
 
 function App() {
   const initialState = {
@@ -246,6 +247,10 @@ function App() {
 
                   <TabPanel>
                     <p>Sentiment Analysis!</p>
+                    {transcript.text && transcript.status === "completed" ? (
+                      <SentimentalAnalysis transcript={transcript} />
+                    ) : (
+                      <></>)}
                   </TabPanel>
 
                   <TabPanel>
