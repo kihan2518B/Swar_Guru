@@ -44,7 +44,7 @@ function App() {
 
   const [isRecording, setIsRecording] = useState(false);
 
-  const ASSEMBLY_API_KEY = "c1db9f2624cf4cbdae6f61f0e6ee20d6";
+  const ASSEMBLY_API_KEY = "3fa4e5fbb0a54b5eab1d435bdc931919";
 
   const handleAudioStop = (data) => {
     setAudioDetails(data);
