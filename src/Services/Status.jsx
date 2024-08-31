@@ -14,10 +14,13 @@ const Status = ({ isLoading, status }) => {
             </Text>
 
             <Progress
-                size="sm"
-                width={500}
+                size="xs"
+                m={2}
+                width="full"
                 isIndeterminate={isLoading}
-                colorScheme='green'
+                // colorScheme='green'
+                   bgGradient="linear(to-r, teal.500, blue.600)"
+                bgClip="text"
             />
         </div>
     )

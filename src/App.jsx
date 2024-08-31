@@ -3,12 +3,10 @@ import React, { useState } from "react";
 
 import { ChakraProvider, Box, VStack, Grid, theme } from "@chakra-ui/react";
 
-
 import Result from "./Services/Results";
 
 import "react-voice-recorder/dist/index.css";
 
-import AboutAndContact from './Pages/AboutUs';
 import "./App.css";
 
 import DrawerBox from "./Components/DrawerBox";
@@ -235,26 +233,31 @@ function App() {
                   <Tab>Reporting and Visualization</Tab>
                 </TabList>
 
-                <TabPanels>
+                <TabPanels
+                  bgGradient="linear(to-r, teal.500, blue.600)"
+                  bgClip="text"
+                >
                   <TabPanel>
                     {transcript.text && transcript.status === "completed" ? (
                       <Result transcript={transcript} />
                     ) : (
-                      <></>)}
+                      <></>
+                    )}
                   </TabPanel>
                   <TabPanel>
                     {transcript.text && transcript.status === "completed" ? (
                       <Keyword transcript={transcript} />
                     ) : (
-                      <></>)}
+                      <></>
+                    )}
                   </TabPanel>
 
                   <TabPanel>
-                    <p>Sentiment Analysis!</p>
                     {transcript.text && transcript.status === "completed" ? (
                       <SentimentalAnalysis transcript={transcript} />
                     ) : (
-                      <></>)}
+                      <></>
+                    )}
                   </TabPanel>
 
                   <TabPanel>
@@ -265,7 +268,6 @@ function App() {
             </Box>
           </VStack>
         </Grid>
-        <AboutAndContact />
       </Box>
     </ChakraProvider>
   );

@@ -15,11 +15,12 @@ const Topic = ({ transcript }) => {
                     )
                     .map((topic, index) => (
                         <Tag
-                            key={index} // Adding a key prop to avoid React's key warning
+                            key={index}
                             size="md"
-                            colorScheme="teal"
-                            variant="solid"
+                            variant="outline"
                             borderRadius="full"
+                            bgGradient="linear(to-r, teal.500, blue.600)"
+                            bgClip="text"
                         >
                             {topic.split('>').pop()}
                         </Tag>
