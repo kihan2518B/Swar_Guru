@@ -1,5 +1,6 @@
+// DrawerBox.jsx
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Box,
   Button,
@@ -9,12 +10,18 @@ import {
   FormControl,
   FormLabel,
   Input,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
 } from "@chakra-ui/react";
+
 import { Recorder } from "react-voice-recorder";
 import "react-voice-recorder/dist/index.css";
 
 const DrawerBox = ({
-  onUploadClick,
   onRecordClick,
   audioDetails,
   handleAudioStop,
@@ -27,15 +34,35 @@ const DrawerBox = ({
   file,
 }) => {
   const [isRecordingLocal, setIsRecordingLocal] = useState(isRecording);
+  const [isDialogOpen, setIsDialogOpen] = useState(false); // State to manage dialog visibility
+  const cancelRef = useRef(); // Ref for cancel button in the dialog
 
   const handleRecordClick = () => {
     setIsRecordingLocal(true);
+    setIsDialogOpen(true); // Open dialog when record button is clicked
     onRecordClick();
   };
 
   const handleStopRecording = () => {
     setIsRecordingLocal(false);
     hanldeReset();
+  };
+
+  const handleDialogClose = () => {
+    setIsDialogOpen(false);
+    if (isRecordingLocal) {
+      handleStopRecording();
+    }
+  };
+
+  const handleClearRecording = () => {
+    handleStopRecording();
+    // Optionally, you can add additional logic to reset state or handle file clearing
+  };
+
+  const handleUploadRecording = () => {
+    handleAudioUpload(audioDetails.blob); // Call upload function with the audio file
+    handleDialogClose(); // Close dialog after uploading
   };
 
   const handleChooseFileClick = () => {
@@ -78,6 +105,7 @@ const DrawerBox = ({
           >
             Record Audio
           </Button>
+
           <form onSubmit={handleDirectUpload}>
             <FormControl id="audio-file" isRequired>
               <FormLabel>Select an audio file to upload</FormLabel>
@@ -112,17 +140,67 @@ const DrawerBox = ({
             </Button>
           </form>
         </VStack>
-        {isRecordingLocal && (
-          <Box mt={4}>
-            <Recorder
-              record={true}
-              audioURL={audioDetails.url}
-              handleAudioStop={handleAudioStop}
-              handleAudioUpload={handleAudioUpload}
-              handleReset={handleStopRecording}
-            />
-          </Box>
-        )}
+
+        {/* AlertDialog for recording confirmation and controls */}
+        <AlertDialog
+          isOpen={isDialogOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={handleDialogClose}
+          isCentered
+          size="md"
+        >
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                Audio Recording
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                {isRecordingLocal && (
+                  <Box>
+                    <Recorder
+                      record={true}
+                      audioURL={audioDetails.url}
+                      handleAudioStop={handleAudioStop}
+                      handleAudioUpload={handleAudioUpload}
+                      handleReset={handleStopRecording}
+                    />
+                  </Box>
+                )}
+                {!isRecordingLocal && (
+                  <Text>Click Record Audio to start recording.</Text>
+                )}
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button
+                  colorScheme="blue"
+                  onClick={handleUploadRecording}
+                  disabled={!audioDetails.blob} // Disable if no audio is recorded
+                >
+                  Upload
+                </Button>
+        
+                <Button
+                  ref={cancelRef}
+                  onClick={handleDialogClose}
+                  ml={3}
+                >
+                  Close
+                </Button>
+                {!isRecordingLocal && (
+                  <Button
+                    colorScheme="green"
+                    onClick={handleRecordClick}
+                    ml={3}
+                  >
+                    Record
+                  </Button>
+                )}
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
       </Flex>
     </Box>
   );

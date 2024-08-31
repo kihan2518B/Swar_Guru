@@ -217,13 +217,14 @@ function App() {
           <VStack spacing={8}>
             <Box width={1000}>
               {transcript.text && transcript.status === "completed" ? (
-                <Result transcript={transcript} />
+                <></>
               ) : (
                 <Status isLoading={isLoading} status={transcript.status} />
               )}
 
               <Tabs isFitted variant="enclosed">
                 <TabList mb="1em">
+                  <Tab>Transcription Engine</Tab>
                   <Tab>Keyword Extraction</Tab>
 
                   <Tab>Sentiment Analysis</Tab>
@@ -232,6 +233,12 @@ function App() {
                 </TabList>
 
                 <TabPanels>
+                  <TabPanel>
+                    {transcript.text && transcript.status === "completed" ? (
+                      <Result transcript={transcript} />
+                    ) : (
+                      <></>)}
+                  </TabPanel>
                   <TabPanel>
                     <p>Keyword Extraction!</p>
                   </TabPanel>
