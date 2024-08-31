@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 import { ChakraProvider, Box, VStack, Grid, theme } from "@chakra-ui/react";
 
-import Status from "./Services/Highlights";
 
 import Result from "./Services/Results";
 
@@ -14,6 +13,7 @@ import "./App.css";
 import DrawerBox from "./Components/DrawerBox";
 
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import Status from "./Services/Status";
 
 function App() {
   const initialState = {

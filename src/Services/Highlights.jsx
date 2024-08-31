@@ -8,7 +8,7 @@ const SentimentColors = {
     NEUTRAL: 'lightgray'
 };
 
-const Highlights = ({ text, sentiment, entities }) => {
+const Highlighted = ({ text, sentiment, entities }) => {
     // For Example
     // text = "Ted Conference was great" --> parts = ["Ted Conference", "was great"]
 
@@ -24,7 +24,7 @@ const Highlights = ({ text, sentiment, entities }) => {
 
                 if (matchingEntity) {
                     return (
-                        <Tooltip 
+                        <Tooltip
                             label={matchingEntity.entity_type}
                             key={index}  // Using 'index' as a unique key
                         >
@@ -39,4 +39,4 @@ const Highlights = ({ text, sentiment, entities }) => {
     );
 };
 
-export default Highlights;
+export default Highlighted;

@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Text } from '@chakra-ui/react';
-import Highlights from './Highlights';
+import Highlighted from './Highlights';
 import Topic from './Topic';
 
 const Result = ({ transcript }) => {
