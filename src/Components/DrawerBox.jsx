@@ -180,7 +180,7 @@ const DrawerBox = ({
                 >
                   Upload
                 </Button>
-        
+
                 <Button
                   ref={cancelRef}
                   onClick={handleDialogClose}
@@ -201,6 +201,7 @@ const DrawerBox = ({
             </AlertDialogContent>
           </AlertDialogOverlay>
         </AlertDialog>
+      
       </Flex>
     </Box>
   );
