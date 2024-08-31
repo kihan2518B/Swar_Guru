@@ -1,14 +1,21 @@
-import React from 'react'
-import Summary from '../Components/Summary'
+import React from 'react';
+import Summary from '../Components/Summary';
+import Chart from '../Components/Chart';
 
 const Reports = ({ transcript }) => {
-    console.log(transcript)
     return (
         <div>
             <h1>Summary</h1>
             <Summary transcript={transcript.text} />
-        </div>
-    )
-}
+            <h1>Visuals</h1>
+            <div className="">
 
-export default Reports
+                <Chart
+                    sentiment={transcript.sentiment_analysis_results}
+                />
+            </div>
+        </div>
+    );
+};
+
+export default Reports;

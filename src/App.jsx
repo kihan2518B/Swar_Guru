@@ -8,7 +8,6 @@ import Result from "./Services/Results";
 
 import "react-voice-recorder/dist/index.css";
 
-import AboutAndContact from './Pages/AboutUs';
 import "./App.css";
 
 import DrawerBox from "./Components/DrawerBox";
@@ -269,7 +268,6 @@ function App() {
             </Box>
           </VStack>
         </Grid>
-        <AboutAndContact />
       </Box>
     </ChakraProvider>
   );
