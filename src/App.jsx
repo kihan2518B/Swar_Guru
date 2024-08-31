@@ -16,6 +16,7 @@ import DrawerBox from "./Components/DrawerBox";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Status from "./Services/Status";
 import SentimentalAnalysis from "./Services/SentimentalAnalysis";
+import Keyword from "./Services/Keyword";
 
 function App() {
   const initialState = {
@@ -242,7 +243,10 @@ function App() {
                       <></>)}
                   </TabPanel>
                   <TabPanel>
-                    <p>Keyword Extraction!</p>
+                    {transcript.text && transcript.status === "completed" ? (
+                      <Keyword transcript={transcript} />
+                    ) : (
+                      <></>)}
                   </TabPanel>
 
                   <TabPanel>
