@@ -16,6 +16,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import Status from "./Services/Status";
 import SentimentalAnalysis from "./Services/SentimentalAnalysis";
 import Keyword from "./Services/Keyword";
+import Reports from "./Services/Reports";
 
 function App() {
   const initialState = {
@@ -257,7 +258,10 @@ function App() {
                   </TabPanel>
 
                   <TabPanel>
-                    <p>Reporting and Visualization!</p>
+                    {transcript.text && transcript.status === "completed" ? (
+                      <Reports transcript={transcript} />
+                    ) : (
+                      <></>)}
                   </TabPanel>
                 </TabPanels>
               </Tabs>
