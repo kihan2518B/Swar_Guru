@@ -66,10 +66,6 @@
     - Add your **AssemblyAI API key**, **Gemini API key**, and other necessary API keys in the `.env` file.
 
 4. **Run the Application:**
-    - Start the backend server:
-      ```bash
-      python app.py
-      ```
     - Start the frontend server:
       ```bash
       npm run dev
